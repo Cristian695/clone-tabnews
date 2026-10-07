@@ -44,11 +44,13 @@ function DataBaseStatus() {
   if (!isLoading && data) {
     databaseStatusInformation = (
       <>
-        <div>Versão: {data.dependencies.database.max_connections}</div>
+        <div>Versão: {data.dependencies.database.postgres_ver}</div>
         <div>
           Conexões abertas: {data.dependencies.database.opened_connections}
         </div>
-        <div>Conexões Maximas: {data.dependencies.database.postgres_ver}</div>
+        <div>
+          Conexões Maximas: {data.dependencies.database.max_connections}
+        </div>
       </>
     );
   }
