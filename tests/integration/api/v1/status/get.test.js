@@ -15,16 +15,9 @@ describe("GET /api/v1/status", () => {
       const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
       expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
 
-      const postgresVer = await responseBody.dependencies.database.postgres_ver;
-      expect(postgresVer).toEqual("16.0");
-
-      const maxConections =
-        await responseBody.dependencies.database.max_connections;
-      expect(maxConections).toEqual(100);
-
-      const currentConections =
-        await responseBody.dependencies.database.opened_connections;
-      expect(currentConections).toBe(1);
+      expect(responseBody.dependencies.database.postgres_ver).toEqual("16.0");
+      expect(responseBody.dependencies.database.max_connections).toEqual(100);
+      expect(responseBody.dependencies.database.opened_connections).toBe(1);
     });
   });
 });
